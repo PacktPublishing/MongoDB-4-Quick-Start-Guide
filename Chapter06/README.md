@@ -1,6 +1,6 @@
-# Chapter 5 _Building Complex Queries Using Aggregation_
+# Chapter 6 _Maintaining MongoDB Performance_
 
-To run these queries, first restore the sample database:
+To restore the sample database:
 * Open a terminal window / command prompt
 * Run the following commands:
 ```
