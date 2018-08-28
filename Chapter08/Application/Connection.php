@@ -24,7 +24,6 @@ class Connection
         $uriOpts = $config['uriOpts'] ?? [];
         $driverOpts = $config['driverOpts'] ?? [];
         $uri = $this->buildUri($config);
-        echo __METHOD__ . ':' . $uri . PHP_EOL; exit;
         $this->mongoClient = new MongoClient($uri, $uriOpts, $driverOpts);
         $this->manager = $this->mongoClient->getManager();
     }
@@ -44,23 +43,19 @@ class Connection
     public function buildUri($config)
     {
         $uri = 'mongodb://';
-        if (isset($config['uri']['username']) && isset($config['uri']['password'])) {
+        if (isset($config['uri']['username']) && isset($config['uri']['password']))
             $uri .= $config['uri']['username'] . ':' . $config['uri']['password'] . '@';
-        }
-        if (!isset($config['uri']['host'])) {
+        if (!isset($config['uri']['host']))
             throw new Exception(self::ERROR_HOST);
-        }
         $uri .= $config['uri']['host'];
         $uri .= (isset($config['uri']['port'])) ? ':' . $config['uri']['port'] : '';
         $uri .= (isset($config['uri']['database'])) ? '/' . $config['uri']['database'] : '';
         if (isset($config['uriOpts'])) {
-            if (!is_array($config['uriOpts'])) {
+            if (!is_array($config['uriOpts']))
                 throw new Exception(self::ERROR_OPTS);
-            }
             $uri .= '?';
-            foreach ($config['uriOpts'] as $key => $value) {
+            foreach ($config['uriOpts'] as $key => $value)
                 $uri .= $key . '=' . $value . '&';
-            }
             // trim trailing '&'
             $uri = substr($uri, 0, -1);
         }
