@@ -1,4 +1,6 @@
 <?php
+// uses the mongodb PHP Library (which requires the mongodb PHP extension) to perform a query
+
 // initialize env
 require __DIR__ . '/vendor/autoload.php';
 use MongoDB\Bson\Regex;
@@ -17,11 +19,12 @@ db.customers.find(
 ).sort({balance:1});
 */
 
-$filter = ['name' => new Regex('Spencer')];
+$filter = ['country' => new Regex('UK'), 'balance' => ['$lt' => 100]];
+$projection = ['projection' => ['name' => 1, 'balance' => 1]];
 try {
-    $cursor = $collection->find($filter);
+    $cursor = $collection->find($filter, $projection);
     foreach ($cursor as $document) {
-        echo $document->name . PHP_EOL;
+        echo $document->name . ':' . $document->balance . PHP_EOL;
         var_dump($document->_id);
     }
 } catch (Exception $e) {

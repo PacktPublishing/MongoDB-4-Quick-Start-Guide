@@ -1,5 +1,8 @@
 <?php
+// Demonstrates how to use some classes available in the mongodb PHP extension
+// Does not use the mongodb PHP library (which, BTW, is recommended!)
 
+// emulates this command:
 // db.customers.find(
 //    {country:/UK/,balance:{$lt:100}},
 //    {_id:0,name:1,email:1,country:1,postal_code:1}

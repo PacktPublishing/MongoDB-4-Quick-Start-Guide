@@ -1,3 +1,6 @@
+// NOTE: you can't run these commands as a script!
+//       you will need to cut and paste these into a mongo shell
+
 conn = new Mongo();
 db = conn.getDB("sweetscomplete");
 // here is the query:

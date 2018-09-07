@@ -1,6 +1,9 @@
 <?php
+// produces JavaScript output which can then be used to build the sweetscomplete.customers collection
+// data source: "sweets_customers.csv"
+
 $out  = '';
-$csv  = new SplFileObject(__DIR__ . '/sweets_customers.csv', 'r');
+$csv  = new SplFileObject(__DIR__ . DIRECTORY_SEPARATOR . 'sweets_customers.csv', 'r');
 $fields = ['name','address','city','state_province','postal_code','country','phone','balance','email','password'];
 
 // insertOne()
@@ -14,7 +17,7 @@ while ($row = $csv->fgetcsv()) {
 }
 echo $out;
 
-// insertMany()
+// the example below has the same result as above but uses the "insertMany()" function
 /*
 $inner = '';
 $row = $csv->fgetcsv();

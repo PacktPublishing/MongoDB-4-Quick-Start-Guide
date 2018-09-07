@@ -2,11 +2,11 @@
 
 To run these queries, first restore the sample database:
 * Open a terminal window / command prompt
-* Run the following commands:
+* Run the following command:
 ```
-mongorestore -d sweetscomplete -c customers ./dump/sweetscomplete/customers.bson
-mongorestore -d sweetscomplete -c products ./dump/sweetscomplete/products.bson
-mongorestore -d sweetscomplete -c purchases ./dump/sweetscomplete/purchases.bson
+mongorestore
 ```
-
-
+* OR run this shell script:
+```
+restore_data_from_backup.sh
+```

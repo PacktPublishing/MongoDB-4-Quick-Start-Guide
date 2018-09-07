@@ -1,15 +1,42 @@
 <?php
+// uses the mongodb PHP Library (which requires the mongodb PHP extension) to build the a collection from a CSV file
+// sample CSV files: "sweets_customers.csv" and "sweets_products.csv"
+
+// get name of collection
+$collection = $argv[1] ?? $_GET['collection'] ?? NULL;
+$dropFirst  = $argv[2] ?? $_GET['drop_first'] ?? FALSE;
+
+if (!$collection) exit ('Collection not specified ... exiting');
+
+// set up as a *.js file
 $out  = '';
-$csv  = new SplFileObject('/home/fred/Downloads/sweets_products.csv', 'r');
+$out .= 'conn = new Mongo();' . PHP_EOL;
+$out .= 'db = conn.getDB("sweetscomplete");' . PHP_EOL;
+
+// drop first?
+if ($dropFirst) {
+    $out .= 'db.' . $collection . '.drop();' . PHP_EOL;
+}
+
+// process headers
+$csv  = new SplFileObject(__DIR__ . DIRECTORY_SEPARATOR . 'sweets_' . $collection . '.csv', 'r');
+$headers = $csv->fgetcsv();
+$numFields = count($headers);
+
+// process data from CSV file
 while ($row = $csv->fgetcsv()) {
-    if (isset($row[0])) {
-        $data = [
-            'sku' => trim($row[0]),
-            'title' => trim($row[1]),
-            'description' => substr($row[2], 0, 40),
-            'price' => $row[3]
-        ];
-        $out .= 'db.products.insert(' . json_encode($data) . ');' . PHP_EOL;
+    // only take complete rows
+    if (isset($row[0]) && count($row) == $numFields) {
+        // convert any numeric data to float
+        foreach ($row as $key => $item)
+            if (ctype_digit($item))
+                $row[$key] = (float) $row[$key];
+
+        // create assoc array
+        $data = array_combine($headers, $row);
+        $out .= 'db.' . $collection . '.insertOne(' . PHP_EOL
+              . json_encode($data, JSON_PRETTY_PRINT) . PHP_EOL
+              . ');' . PHP_EOL;
     }
 }
 echo $out;
