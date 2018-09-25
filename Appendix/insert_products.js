@@ -1,5 +1,3 @@
-# Run this file from the command line or from inside a mongo shell
-# Inserts data in the sweetscomplete.products collection
 conn = new Mongo();
 db = conn.getDB("sweetscomplete");
 db.products.drop();

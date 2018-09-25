@@ -1,6 +1,4 @@
 <?php
-// uses the mongodb PHP Library (which requires the mongodb PHP extension) to build the customers collection from a CSV file
-
 // initialize env
 require __DIR__ . '/vendor/autoload.php';
 use Application\ {Client, Csv};

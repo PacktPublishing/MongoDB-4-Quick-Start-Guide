@@ -1,6 +1,4 @@
 <?php
-// produces JavaScript output which can be used to build up the sweetscomplete.products collection
-
 $out  = '';
 $csv  = new SplFileObject(__DIR__ . DIRECTORY_SEPARATOR . 'sweets_products.csv', 'r');
 while ($row = $csv->fgetcsv()) {

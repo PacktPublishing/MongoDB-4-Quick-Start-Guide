@@ -1,33 +1,10 @@
 <?php
-// generates array "purch_history" inside a customer document
-// example:
+// generates array "purchases" inside a customer document
+
 /*
 {
-    "_id" : ObjectId("5b482b45533b843e7b6f70c3"),
-    "name" : "Conrad Perry",
-    "address" : "79 Amber Branch Falls",
-    "city" : "Birdseye",
-    "state_province" : "QC",
-    "postal_code" : "G0U 0M5",
-    "country" : "CA",
-    "phone" : "484-181-9811",
-    "balance" : 745.32,
-    "email" : "conrad.perry@fastmedia.com",
-    "password" : "$2y$10$dXcMwUgiezGGSrKqy0/4LOJNT6fy2BCaAvw4DDdnZ.3ZBztMEF/zK",
-    "purch_history" : [
-        "2017-09-20",
-        "2018-03-10",
-        "2019-03-04",
-        "2017-09-13",
-        "2019-04-19"
-    ]
 }
 */
-
-// REQUIRED TO RUN THIS SCRIPT:
-// (1) PHP v7.0 or above
-// (2) mongodb PHP extension (use PECL)
-// (3) mongodb/mongodb PHP library (use Composer)
 
 require __DIR__ . '/vendor/autoload.php';
 use Application\Client;

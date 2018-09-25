@@ -1,6 +1,4 @@
 <?php
-// uses the mongodb PHP Library (which requires the mongodb PHP extension) to perform an update
-
 // initialize env
 require __DIR__ . '/vendor/autoload.php';
 use MongoDB\BSON\ObjectId;

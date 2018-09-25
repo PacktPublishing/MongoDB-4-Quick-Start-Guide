@@ -1,7 +1,4 @@
 <?php
-// uses classes from the mongodb PHP Library and the mongodb PHP extension to
-// NOTE: write down the ObjectId from the first example, and then paste into "new ObjectId(xxxx)" for the 2nd example to work
-
 // initialize env
 require __DIR__ . '/vendor/autoload.php';
 use MongoDB\BSON\ {Regex, ObjectId};
@@ -12,11 +9,10 @@ $params = ['host' => '127.0.0.1'];
 $client = (new Client($params))->getClient();
 $collection = $client->sweetscomplete->customers;
 
-//************ FIRST EXAMPLE ***********************************************************
 // here is the javascript query we wish to emulate:
-// db.customers.find({name:/Conrad/});
+// db.customers.find({name:/Spencer/});
 
-$filter = ['name' => new Regex('Conrad')];
+$filter = ['name' => new Regex('Spencer')];
 try {
     $document = $collection->findOne($filter);
     // Check if the result is a BSONDocument. If not, then document was not found.
@@ -30,11 +26,10 @@ try {
     echo $e->getMessage() . PHP_EOL;
 }
 
-//************ SECOND EXAMPLE *********************************************************
 // here is the javascript query we wish to emulate:
 // db.customers.find(ObjectId("5b47108b533b8406ac227798"));
 
-$filter = ['_id' => new ObjectId('5b482b45533b843e7b6f70c3')];
+$filter = ['_id' => new ObjectId('5b47108b533b8406ac227798')];
 try {
     $document = $collection->findOne($filter);
     // Check if the result is a BSONDocument. If not, then document was not found.

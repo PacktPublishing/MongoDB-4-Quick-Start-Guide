@@ -2,11 +2,15 @@
 
 To run these queries, first restore the sample database:
 * Open a terminal window / command prompt
-* Run the following command:
+* Run this command:
 ```
 mongorestore
 ```
-* OR run this shell script:
+* Alternatively (if that doesn't work), run the following commands:
 ```
-restore_data_from_backup.sh
+mongorestore -d sweetscomplete -c customers ./dump/sweetscomplete/customers.bson
+mongorestore -d sweetscomplete -c products ./dump/sweetscomplete/products.bson
+mongorestore -d sweetscomplete -c purchases ./dump/sweetscomplete/purchases.bson
 ```
+
+

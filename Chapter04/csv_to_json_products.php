@@ -1,7 +1,4 @@
 <?php
-// uses the mongodb PHP Library (which requires the mongodb PHP extension) to build the a collection from a CSV file
-// sample CSV files: "sweets_customers.csv" and "sweets_products.csv"
-
 // get name of collection
 $collection = $argv[1] ?? $_GET['collection'] ?? NULL;
 $dropFirst  = $argv[2] ?? $_GET['drop_first'] ?? FALSE;

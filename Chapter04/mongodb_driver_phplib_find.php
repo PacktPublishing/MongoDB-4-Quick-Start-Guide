@@ -1,6 +1,4 @@
 <?php
-// uses the mongodb PHP Library (which requires the mongodb PHP extension) to perform a query
-
 // initialize env
 require __DIR__ . '/vendor/autoload.php';
 use MongoDB\Bson\Regex;

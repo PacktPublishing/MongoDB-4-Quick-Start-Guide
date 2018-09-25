@@ -1,4 +1,3 @@
-# Example JavaScript to insert customers
 conn = new Mongo();
 db = conn.getDB("sweetscomplete");
 db.customers.insertOne({"name":"Karyn Francis","address":"871 Rocky Autumn Mews","city":"Gassaway",

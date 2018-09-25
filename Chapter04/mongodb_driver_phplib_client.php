@@ -1,6 +1,4 @@
 <?php
-// demonstrates how to create a client connection
-// assumes no security
 
 require __DIR__ . '/vendor/autoload.php';
 

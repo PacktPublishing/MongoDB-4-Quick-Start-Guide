@@ -1,9 +1,4 @@
 <?php
-// Demonstrates how to use some classes available in the mongodb PHP extension
-// Does not use the mongodb PHP library (which, BTW, is recommended!)
-
-// inserts flag icons into a collection "mongodb_quickstart.flags"
-
 use MongoDB\BSON\Binary;
 use MongoDB\Driver\ {Manager, BulkWrite, Query};
 

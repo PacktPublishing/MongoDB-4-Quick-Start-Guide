@@ -12,7 +12,7 @@ return [
     'uri' => [
         'host' => 'mongod',
         'database' => 'sweetscomplete',
-        'username' => 'zed',
+        'username' => 'CN=zed,OU=mongodb,O=unlikelysource,L=Surin,ST=Surin,C=TH',
         'password' => 'password',
     ],
     'uriOpts' => [

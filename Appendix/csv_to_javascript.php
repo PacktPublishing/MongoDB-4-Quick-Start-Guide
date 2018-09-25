@@ -1,16 +1,4 @@
 <?php
-
-// generates JavaScript file which populates $database.$collection
-// if $dropFirst is specified, drops current $collection before proceeding
-// if $target is specified, creates a javascript file $target
-// pulls data from a file $collection.csv
-// There is a sample data file "customers.csv" provide to test this script
-
-// REQUIRED TO RUN THIS SCRIPT:
-// (1) PHP v7.0 or above
-// (2) mongodb PHP extension (use PECL)
-// (3) mongodb/mongodb PHP library (use Composer)
-
 // get name of collection
 $database   = $argv[1] ?? $_GET['database'] ?? NULL;
 $collection = $argv[2] ?? $_GET['collection'] ?? NULL;

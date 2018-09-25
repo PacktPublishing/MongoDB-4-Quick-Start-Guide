@@ -23,11 +23,6 @@
 }
 */
 
-// REQUIRED TO RUN THIS SCRIPT:
-// (1) PHP v7.0 or above
-// (2) mongodb PHP extension (use PECL)
-// (3) mongodb/mongodb PHP library (use Composer)
-
 require __DIR__ . '/vendor/autoload.php';
 use Application\Client;
 

@@ -27,24 +27,38 @@ db.createUser(
 use admin;
 db.createUser(
   {
-    user: "zed",
-    pwd: "some.password",
+    user: "CN=zed,OU=mongodb,O=unlikelysource,L=Surin,ST=Surin,C=TH",
+    pwd: "password",
     roles: [ { role: "readWrite", db: "sweetscomplete" } ]
   }
 );
 
-// change user's password and authentication mechanism
+// change user's authentication mechanism
 use admin;
-db.updateUser(
-  "zed",
-  {
-    pwd: "password",
-    mechanisms: [ "MONGODB-X509" ]
-  }
+db.getSiblingDB("$external").runCommand(
+    {
+        createUser: "CN=zed,OU=mongodb,O=unlikelysource,L=Surin,ST=Surin,C=TH",
+        roles: [
+            { role: 'readWrite', db: 'sweetscomplete' }
+        ],
+        writeConcern: { w: "majority" , wtimeout: 5000 }
+    }
 );
 
-// remove use "zed"
+// authenticate user
+use admin;
+db.getSiblingDB("$external").auth(
+    {
+        mechanism: "MONGODB-X509",
+        user: "CN=zed,OU=mongodb,O=unlikelysource,L=Surin,ST=Surin,C=TH"
+    }
+);
+
+// check authenticated users
+db.runCommand({connectionStatus : 1})
+
+// remove user "zed"
 use admin;
 db.dropUser(
-  "zed"
+  "CN=zed,OU=mongodb,O=unlikelysource,L=Surin,ST=Surin,C=TH"
 );
